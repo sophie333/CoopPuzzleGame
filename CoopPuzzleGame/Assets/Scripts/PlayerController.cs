@@ -4,70 +4,62 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float constantSpeed;
-
-    //private Vector3 gravity = new Vector3(0, -120f, 0);
-    private float gravity = -120f;
-    private float lerpSpeed = 10; // smoothing speed
-    private Vector3 surfaceNormal; //current surface normal
+    public float constantSpeed = 10.0f;
+    
+    private Vector3 gravity; //local gravity vector
+    private float distGround; //distance from character position to ground
 
     //player variables
-    private Vector3 playerNormal; // player normal
-    private Rigidbody rbody;
+    private Rigidbody m_rbody;
     private Transform m_transform;
+    private BoxCollider m_collider;
+    private Vector3 movement = Vector3.zero;
+    private bool frozenMov;
 
     void Start()
     {
-        rbody = GetComponent<Rigidbody>();
+        m_rbody = GetComponent<Rigidbody>();
+        m_collider = GetComponent<BoxCollider>();
         m_transform = transform;
-        playerNormal = transform.up;
+        gravity = new Vector3(0f, -9.8f, 0f);
+        distGround = m_collider.size.y - m_collider.center.y;
     }
 
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-        rbody.AddForce(movement * constantSpeed); //+ gravity
-        //apply constant weight force according to player normal
-        rbody.AddForce(gravity * rbody.mass * playerNormal);
+        if (!frozenMov)
+        {
+            m_rbody.AddForce(movement * constantSpeed + gravity);
+        }
     }
 
     private void Update()
     {
-        //update surface normal
-        Ray ray = new Ray(m_transform.position, -playerNormal);
-        RaycastHit hit;
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
 
-        if (Physics.Raycast(ray, out hit))
-        { //use it to update surface normal
-            Debug.Log("yej");
-            surfaceNormal = hit.normal;
-        }
-        else
-        {
-            Debug.Log("nop");
-            surfaceNormal = Vector3.up;
-        }
-        playerNormal = Vector3.Lerp(playerNormal, surfaceNormal, lerpSpeed * Time.deltaTime);
-    }
-    /* public void SetGravity(float y)
-     {
-         gravity = new Vector3(0, y, 0);
-     }*/
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Ray ray = new Ray(m_transform.position, m_transform.for)
+        movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
     }
 
-        public void CrossEdge()
+    public void SetGravity(Vector3 _grav)
     {
-        rbody.isKinematic = true;
-        Vector3 originalPos = m_transform.position;
-        Quaternion originalRot = m_transform.rotation;
+        gravity = _grav;
+    }
 
+    public void DisableMovement()
+    {
+        //m_rbody.isKinematic = true;
+        frozenMov = true;
+    }
+
+    public void EnableMovement()
+    {
+        //frozenMov = false;
+        m_rbody.isKinematic = false;
+    }
+
+    public float GetDistGround()
+    {
+        return distGround;
     }
 }
