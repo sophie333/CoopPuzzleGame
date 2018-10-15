@@ -26,18 +26,17 @@ public class EdgeHandler : MonoBehaviour
             player.DisableMovement();
 
             //rotate player
-            Vector3 eulerRotation = new Vector3(m_transform.eulerAngles.x, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
-            player.transform.rotation = Quaternion.Euler(eulerRotation);
+            //Vector3 eulerRotation = new Vector3(m_transform.eulerAngles.x, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
+            //player.transform.rotation = Quaternion.Euler(eulerRotation);
             player.SetGravity(gravityVector);
 
             //send ray down
             RaycastHit hit;
             Ray ray = new Ray(m_transform.position, -m_transform.up);
 
-            if (Physics.Raycast(ray, out hit))//jumpRange))
+            if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Found face");
-                JumpToWall(hit.point, hit.normal, player); // yes: jump to the wall
+                WalkAroundEdge(hit.point, hit.normal, player); 
             }
 
             //enable movement
@@ -48,28 +47,35 @@ public class EdgeHandler : MonoBehaviour
         }
     }
 
-    private void JumpToWall(Vector3 point, Vector3 normal, PlayerController player)
+    private void WalkAroundEdge(Vector3 point, Vector3 normal, PlayerController player)
     {
-        //move to new face
+        //store original position & rotation
         Vector3 originalPos = player.transform.position;
         Quaternion originalRot = player.transform.rotation;
 
-        Vector3 destinPos = point + normal * (player.GetDistGround() + 0.5f); // will jump to 0.5 above wall
-        Vector3 playerForward = Vector3.Cross(player.transform.right, normal);
-        Quaternion destinRot = Quaternion.LookRotation(playerForward, normal);
+        //calculate target position and rotation
+        Vector3 targetPos = player.transform.position + normal * player.GetDistGround(); //move player above target surface
+        Vector3 playerForward = Vector3.Cross(player.transform.right, normal); //calculate new player forward vector
+        targetPos += playerForward * 1.5f; //move player forward to actually be over target surface
+        Quaternion targetRot = Quaternion.LookRotation(playerForward, normal); //creating new rotation out of forward and up vector
 
-        StartCoroutine(jumpTime(originalPos, originalRot, destinPos, destinRot, player));
-        //jumptime
+        for (float t = 0.0f; t < 1.0f;)
+        {
+            t += Time.deltaTime;
+            player.transform.position = Vector3.Lerp(originalPos, targetPos, t);
+            player.transform.rotation = Quaternion.Slerp(originalRot, targetRot, t);
+        }
+        //StartCoroutine(jumpTime(originalPos, originalRot, targetPos, targetRot, player));
     }
-
-    private IEnumerator jumpTime(Vector3 orgPos, Quaternion orgRot, Vector3 dstPos, Quaternion dstRot, PlayerController player)
+    /*
+    private IEnumerator jumpTime(Vector3 originalPos, Quaternion originalRot, Vector3 targetPos, Quaternion targetRot, PlayerController player)
     {
         for (float t = 0.0f; t < 1.0f;)
         {
             t += Time.deltaTime;
-            player.transform.position = Vector3.Lerp(orgPos, dstPos, t);
-            player.transform.rotation = Quaternion.Slerp(orgRot, dstRot, t);
+            player.transform.position = Vector3.Lerp(originalPos, targetPos, t);
+            player.transform.rotation = Quaternion.Slerp(originalRot, targetRot, t);
             yield return null; // return here next frame
         }
-    }
+    }*/
 }

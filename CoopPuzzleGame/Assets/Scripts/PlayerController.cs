@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     public void DisableMovement()
     {
-        //m_rbody.isKinematic = true;
+        m_rbody.isKinematic = true;
         frozenMov = true;
     }
 
