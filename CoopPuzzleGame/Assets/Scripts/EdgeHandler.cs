@@ -28,7 +28,6 @@ public class EdgeHandler : MonoBehaviour
             //rotate player
             //Vector3 eulerRotation = new Vector3(m_transform.eulerAngles.x, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
             //player.transform.rotation = Quaternion.Euler(eulerRotation);
-            player.SetGravity(gravityVector);
 
             //send ray down
             RaycastHit hit;
@@ -42,7 +41,9 @@ public class EdgeHandler : MonoBehaviour
             //enable movement
             //player.EnableMovement();
 
+            player.SetGravity(gravityVector);
             //disable trigger
+            player.EnableMovement();
 
         }
     }
