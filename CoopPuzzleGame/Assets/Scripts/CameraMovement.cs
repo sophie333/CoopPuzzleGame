@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
-{
+{/*
     [SerializeField]
     private PlayerController m_player;
     private float m_playerAngle;
@@ -14,7 +14,7 @@ public class CameraMovement : MonoBehaviour
     {
         m_playerAngle = m_player.transform.rotation.eulerAngles.x;
     }
-    /*
+    
     void LateUpdate()
     {
 

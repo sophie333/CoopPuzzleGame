@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     private BoxCollider m_collider;
     private Vector3 movement = Vector3.zero;
     private bool isFrozen = false;
+    private bool forward = false;
+    private bool backwards = false;
+    private bool sideways = false;
 
     void Start()
     {
@@ -36,9 +39,39 @@ public class PlayerController : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
-
-        //movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
+        
         movement = m_transform.forward * Input.GetAxis("Vertical")* constantSpeed + m_transform.right * Input.GetAxis("Horizontal")* constantSpeed;
+
+        CheckMovement();
+    }
+
+    private void CheckMovement()
+    {
+        if (Input.GetAxis("Vertical") > 0)
+        {
+            forward = true;
+            backwards = false;
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            backwards = true;
+            forward = false;
+        }
+        if (Input.GetAxis("Horizontal") < 0 || Input.GetAxis("Horizontal") > 0)
+        {
+            sideways = true;
+            backwards = false;
+            forward = false;
+        }
+    }
+
+    private void OnGUI()
+    {
+        GUI.Label(new Rect(5.0f, 5.0f, 200.0f, 30.0f), "Horizontal axis: ");
+        GUI.Label(new Rect(150.0f, 5.0f, 200.0f, 30.0f), Input.GetAxis("Horizontal").ToString());
+
+        GUI.Label(new Rect(5.0f, 30.0f, 200.0f, 30.0f), "Vertical axis: ");
+        GUI.Label(new Rect(150.0f, 30.0f, 200.0f, 30.0f), Input.GetAxis("Vertical").ToString());
     }
 
     public void SetGravity(Vector3 _grav)
@@ -61,5 +94,22 @@ public class PlayerController : MonoBehaviour
     public float GetDistGround()
     {
         return m_collider.size.y - m_collider.center.y; //distance from character position to ground
+    }
+
+    public string GetActiveAxis()
+    {
+        if (forward)
+        {
+            return "forward";
+        }
+        else if(sideways)
+        {
+            return "sideways";
+        }
+        else if(backwards)
+        {
+            return "backwards";
+        }
+        return "none";
     }
 }
