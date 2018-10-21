@@ -13,20 +13,20 @@ public class PlayerController : MonoBehaviour
     private Transform m_transform;
     private BoxCollider m_collider;
     private Vector3 movement = Vector3.zero;
-    private bool frozenMov;
+    private bool isFrozen = false;
 
     void Start()
     {
         m_rbody = GetComponent<Rigidbody>();
         m_collider = GetComponent<BoxCollider>();
         m_transform = transform;
-        //original grav: gravity = new Vector3(0f, -9.8f, 0f);
+
         gravity = new Vector3(0f, -9.8f, 0f);
     }
 
     void FixedUpdate()
     {
-        if (!frozenMov)
+        if (!isFrozen)
         {
             m_rbody.AddForce(movement * constantSpeed + gravity);
         }
@@ -49,13 +49,13 @@ public class PlayerController : MonoBehaviour
     public void DisableMovement()
     {
         m_rbody.isKinematic = true;
-        frozenMov = true;
+        isFrozen = true;
     }
 
     public void EnableMovement()
     {
-        frozenMov = false;
         m_rbody.isKinematic = false;
+        isFrozen = false;
     }
 
     public float GetDistGround()

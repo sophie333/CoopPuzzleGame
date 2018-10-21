@@ -22,10 +22,9 @@ public class EdgeHandler : MonoBehaviour
         
         if(player)
         {
-            //disable movement
             player.DisableMovement();
 
-            //rotate player
+            //Old player rotation
             //Vector3 eulerRotation = new Vector3(m_transform.eulerAngles.x, player.transform.eulerAngles.y, player.transform.eulerAngles.z);
             //player.transform.rotation = Quaternion.Euler(eulerRotation);
 
@@ -38,13 +37,10 @@ public class EdgeHandler : MonoBehaviour
                 WalkAroundEdge(hit.point, hit.normal, player); 
             }
 
-            //enable movement
-            //player.EnableMovement();
-
             player.SetGravity(gravityVector);
-            //disable trigger
             player.EnableMovement();
 
+            //TODO? disable trigger
         }
     }
 
@@ -55,7 +51,7 @@ public class EdgeHandler : MonoBehaviour
         Quaternion originalRot = player.transform.rotation;
 
         //calculate target position and rotation
-        Vector3 targetPos = player.transform.position + normal * player.GetDistGround(); //move player above target surface
+        Vector3 targetPos = player.transform.position + normal; //* player.GetDistGround(); //move player above target surface
         Vector3 playerForward = Vector3.Cross(player.transform.right, normal); //calculate new player forward vector
         targetPos += playerForward * 1.5f; //move player forward to actually be over target surface
         Quaternion targetRot = Quaternion.LookRotation(playerForward, normal); //creating new rotation out of forward and up vector
