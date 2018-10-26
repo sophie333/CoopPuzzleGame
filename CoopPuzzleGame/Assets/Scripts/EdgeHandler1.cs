@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EdgeHandler : MonoBehaviour
+public class EdgeHandler1 : MonoBehaviour
 {
     public Vector3 m_gravityVector; // Different gravity vector for every side of the cube
     private Transform m_transform;
+    private Vector3 surfaceNormal; // current surface normal
 
     private Transform m_playerTrans;
     private bool active = false;
@@ -21,7 +22,7 @@ public class EdgeHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
+        PlayerController1 player = other.GetComponent<PlayerController1>();
         
         if(player && active)
         {
@@ -34,8 +35,18 @@ public class EdgeHandler : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                WalkAroundEdge(hit.point, hit.normal, player); 
+                WalkAroundEdge(hit.point, hit.normal, player);
+                surfaceNormal = hit.normal;
+            } else
+            {
+                surfaceNormal = Vector3.up;
             }
+
+            player.myNormal = Vector3.Lerp(player.myNormal, surfaceNormal, 10 * Time.deltaTime);
+
+            Vector3 myForward = Vector3.Cross(m_playerTrans.right, player.myNormal);
+            Quaternion targetRot = Quaternion.LookRotation(myForward, player.myNormal);
+            m_playerTrans.rotation = Quaternion.Lerp(m_playerTrans.rotation, targetRot, 10 * Time.deltaTime);
 
             player.SetGravity(m_gravityVector);
             player.EnableMovement();
@@ -44,7 +55,7 @@ public class EdgeHandler : MonoBehaviour
     }
 
     // Turns player around to stand on new surface
-    private void WalkAroundEdge(Vector3 point, Vector3 normal, PlayerController player)
+    private void WalkAroundEdge(Vector3 point, Vector3 normal, PlayerController1 player)
     {
         // Store original position & rotation
         Vector3 originalPos = m_playerTrans.position;
@@ -52,26 +63,13 @@ public class EdgeHandler : MonoBehaviour
         
         // Calculate target position and rotation
         Vector3 targetPos = (m_playerTrans.position + normal) + m_playerTrans.up * -1.5f; // Move player above and little bit inside surface
-        Vector3 playerForward = Vector3.zero; 
-        
+
+        Vector3 myForward = Vector3.Cross(m_playerTrans.right, normal);
+
         // Create new forward direction for player
-        // When moving forward
-        if (Vector3.Cross(m_playerTrans.right, normal) == -m_playerTrans.up)
-        {
-            playerForward = -m_playerTrans.up;
-        }
-        // When moving backwards
-        else if (Vector3.Cross(-m_playerTrans.right, normal) == -m_playerTrans.up)
-        {
-            playerForward = m_playerTrans.up;
-        }
-        // When moving sideways
-        else if (Vector3.Cross(m_playerTrans.forward, normal) == -m_playerTrans.up || Vector3.Cross(-m_playerTrans.forward, normal) == -m_playerTrans.up)
-        {
-            playerForward = m_playerTrans.forward;
-        }
-        
-        Quaternion targetRot = Quaternion.LookRotation(playerForward, normal); // Create new rotation out of (new) forward and up vector
+
+
+        Quaternion targetRot = Quaternion.LookRotation(myForward, normal); // Create new rotation out of (new) forward and up vector
 
         // Move player on right position bit by bit
         for (float t = 0.0f; t < 1.0f;)
