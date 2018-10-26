@@ -13,7 +13,7 @@ public class EdgeHandler : MonoBehaviour
     private void Start()
     {
         m_transform = transform;
-        if (gameObject.name != "TriggerB")
+        if (gameObject.name != "TriggerE")
         {
             active = true;
         }

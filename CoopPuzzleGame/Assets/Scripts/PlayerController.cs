@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_tag == "player2")
         {
-            gravity = new Vector3(0f, 0f, -9.8f);
+            gravity = new Vector3(-9.8f, 0f, 0f);
         }
     }
 
@@ -43,11 +43,45 @@ public class PlayerController : MonoBehaviour
     {    
         if (m_tag == "player1") 
             {
-            movement = m_transform.forward * Input.GetAxis("Vertical_P1") * constantSpeed + m_transform.right * Input.GetAxis("Horizontal_P1") * constantSpeed;
+            float speedV = 0;
+            float speedH = 0;
+
+            if (Input.GetAxisRaw("Vertical_P1") > 0.1f)
+                speedV = 1;
+            else if (Input.GetAxisRaw("Vertical_P1") < -0.1f)
+                speedV = -1;
+            else
+                speedV = 0;
+
+            if (Input.GetAxisRaw("Horizontal_P1") > 0.1f)
+                speedH = 1;
+            else if (Input.GetAxisRaw("Horizontal_P1") < -0.1f)
+                speedH = -1;
+            else
+                speedH = 0;
+
+            movement = m_transform.forward * speedV + m_transform.right * speedH;
         } 
         else if (m_tag == "player2")
         {
-            movement = m_transform.forward * Input.GetAxis("Vertical_P2") * constantSpeed + m_transform.right * Input.GetAxis("Horizontal_P2") * constantSpeed;
+            float speedV = 0;
+            float speedH = 0;
+
+            if (Input.GetAxisRaw("Vertical_P2") > 0.1f)
+                speedV = 1;
+            else if (Input.GetAxisRaw("Vertical_P2") < -0.1f)
+                speedV = -1;
+            else
+                speedV = 0;
+
+            if (Input.GetAxisRaw("Horizontal_P2") > 0.1f)
+                speedH = 1;
+            else if (Input.GetAxisRaw("Horizontal_P2") < -0.1f)
+                speedH = -1;
+            else
+                speedH = 0;
+
+            movement = m_transform.forward * speedV + m_transform.right * speedH;
         }
     }
 

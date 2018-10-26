@@ -30,7 +30,7 @@ public class PlayerController1 : MonoBehaviour
         }
         else if (m_tag == "player2")
         {
-            gravity = new Vector3(0f, 0f, -9.8f);
+            gravity = new Vector3(-9.8f, 0f, 0f);
         }
     }
 
