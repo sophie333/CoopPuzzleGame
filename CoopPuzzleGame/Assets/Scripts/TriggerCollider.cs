@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorMovement : MonoBehaviour {
+public class TriggerCollider : MonoBehaviour {
 
     [SerializeField]
     private GameObject door;
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
+        PlayerController1 player = other.GetComponent<PlayerController1>();
 
         if (player)
         {
-            door.transform.position = new Vector3(16.1f, -5.81f, 7.27f);
+            door.SetActive(false);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
+        PlayerController1 player = other.GetComponent<PlayerController1>();
 
         if (player)
         {
-            door.transform.position = new Vector3(11.09f, -5.81f, 7.27f);
+            door.SetActive(true);
         }
     }
 }

@@ -30,7 +30,7 @@ public class PlayerController1 : MonoBehaviour
         }
         else if (m_tag == "player2")
         {
-            gravity = new Vector3(-9.8f, 0f, 0f);
+            gravity = new Vector3(0f, -9.8f, 0f);
         }
     }
 
@@ -55,15 +55,6 @@ public class PlayerController1 : MonoBehaviour
             m_transform.Rotate(0, Input.GetAxis("Horizontal_P2") * turnSpeed * Time.deltaTime, 0);
             m_transform.Translate(0, 0, Input.GetAxis("Vertical_P2") * constantSpeed * Time.deltaTime);
         }
-    }
-
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(5.0f, 5.0f, 200.0f, 30.0f), "Horizontal axis: ");
-        GUI.Label(new Rect(150.0f, 5.0f, 200.0f, 30.0f), Input.GetAxis("Horizontal_P1").ToString());
-
-        GUI.Label(new Rect(5.0f, 30.0f, 200.0f, 30.0f), "Vertical axis: ");
-        GUI.Label(new Rect(150.0f, 30.0f, 200.0f, 30.0f), Input.GetAxis("Vertical_P1").ToString());
     }
 
     public void SetGravity(Vector3 _grav)
