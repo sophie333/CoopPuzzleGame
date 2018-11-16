@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController1 : MonoBehaviour
 {
-    public float constantSpeed = 10.0f;
-    public float turnSpeed = 1.0f;
+    public float constantSpeed = 6.0f;
+    public float turnSpeed = 70.0f;
 
     private Vector3 gravity; // gravity acceleration
 
@@ -16,6 +16,7 @@ public class PlayerController1 : MonoBehaviour
     private Vector3 movement = Vector3.zero;
     private bool isFrozen = false;
     public Vector3 myNormal; // character normal
+
 
     void Start()
     {
