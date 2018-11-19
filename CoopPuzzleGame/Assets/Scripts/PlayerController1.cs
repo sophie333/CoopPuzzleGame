@@ -13,6 +13,7 @@ public class PlayerController1 : MonoBehaviour
     private string m_tag;
     private Rigidbody m_rbody;
     private Transform m_transform;
+    private Vector3 m_position;
     private Vector3 movement = Vector3.zero;
     private bool isFrozen = false;
     public Vector3 myNormal; // character normal
@@ -24,6 +25,7 @@ public class PlayerController1 : MonoBehaviour
         m_rbody = GetComponent<Rigidbody>();
         m_transform = transform;
         m_tag = gameObject.tag;
+        m_position = transform.position;
 
         if (m_tag == "player1")
         {
@@ -73,5 +75,10 @@ public class PlayerController1 : MonoBehaviour
     {
         m_rbody.isKinematic = false;
         isFrozen = false;
+    }
+
+    public Vector3 GetOrigPos()
+    {
+        return m_position;
     }
 }
