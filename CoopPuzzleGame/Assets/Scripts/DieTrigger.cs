@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DieTrigger : MonoBehaviour {
 
+    [SerializeField] GameManager gameManager;
+
     private void OnTriggerEnter(Collider other)
     {
         BoxBehavior box = other.GetComponent<BoxBehavior>();
@@ -15,7 +17,7 @@ public class DieTrigger : MonoBehaviour {
         }
         else if (player)
         {
-            player.transform.position = player.GetOrigPos();
+            gameManager.Restart();
         }
     }
 }
