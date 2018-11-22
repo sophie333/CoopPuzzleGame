@@ -997,11 +997,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 397560270}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.3000002, z: 0.79999936}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 9}
   m_Children: []
-  m_Father: {fileID: 1044063294}
-  m_RootOrder: 5
+  m_Father: {fileID: 622134027}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &402435708
 GameObject:
@@ -1218,6 +1218,36 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 07e043818f22ffd4c9e146b1d6a49d7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &622134026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 622134027}
+  m_Layer: 10
+  m_Name: LaserBeam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &622134027
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 622134026}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.3000002, z: 0.79999936}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 397560273}
+  - {fileID: 1362745954}
+  m_Father: {fileID: 1044063294}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625843973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1901,7 +1931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c559b1e276310104ea176ebd05363ede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1072744303}
+  obj: {fileID: 622134026}
 --- !u!1 &991471193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,16 +2190,10 @@ Transform:
   - {fileID: 1878393741}
   - {fileID: 134993021}
   - {fileID: 1504374416}
-  - {fileID: 397560273}
-  - {fileID: 1362745954}
+  - {fileID: 622134027}
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &1072744303 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1221460997732012, guid: aebacbc63ab99f849942b157e77bc0cc,
-    type: 2}
-  m_PrefabInternal: {fileID: 80936033}
 --- !u!1 &1085071341
 GameObject:
   m_ObjectHideFlags: 0
@@ -2417,11 +2441,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362745953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.019999864, y: 1.2799997, z: 1}
+  m_LocalPosition: {x: 0.019999864, y: -0.020000458, z: 0.20000076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1044063294}
-  m_RootOrder: 6
+  m_Father: {fileID: 622134027}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!199 &1362745955
 ParticleSystemRenderer:
@@ -8273,7 +8297,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 50b0cb9211650c045b3dc7561a07a411, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 34ad31c79c66e3c4f9d02af5bf45bf9a, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
