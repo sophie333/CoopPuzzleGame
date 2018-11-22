@@ -14,6 +14,7 @@ public class DieTrigger : MonoBehaviour {
         if (box)
         {
             box.transform.position = box.GetOrigPos();
+            Debug.Log("box here");
         }
         else if (player)
         {

@@ -11,16 +11,14 @@ public class MovPlatformTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         move.Play("moveTo");
-        StartCoroutine(ChangeLayer());
     }
 
     private void OnTriggerExit(Collider other)
     {
-        move.Play("moveBack");
-        StartCoroutine(ChangeLayer());
+        //move.Play("moveBack");
     }
 
-    private IEnumerator ChangeLayer()
+    /*private IEnumerator ChangeLayer()
     {
         yield return new WaitForSeconds(0.5f);
         if (obj.layer == 9)
@@ -31,5 +29,5 @@ public class MovPlatformTrigger : MonoBehaviour
         {
             obj.layer = 9;
         }
-    }
+    }*/
 }
