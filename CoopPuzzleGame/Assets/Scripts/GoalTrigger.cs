@@ -7,6 +7,7 @@ public class GoalTrigger : MonoBehaviour {
     [SerializeField] GameObject door1;
     [SerializeField] GameObject door2;
     [SerializeField] GameObject winText;
+    [SerializeField] AudioSource cheering;
 
     private int playerNr = 0;
 
@@ -37,6 +38,7 @@ public class GoalTrigger : MonoBehaviour {
             door1.SetActive(false);
             door2.SetActive(false);
             winText.SetActive(true);
+            cheering.Play();
         }
     }
 }
