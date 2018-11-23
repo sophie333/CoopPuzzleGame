@@ -5,6 +5,13 @@ using UnityEngine;
 public class DieTrigger : MonoBehaviour {
 
     [SerializeField] GameManager gameManager;
+    [SerializeField] AudioSource respawnSound;
+    [SerializeField] AudioSource fallSound;
+
+    private void Awake()
+    {
+        respawnSound.Play();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,7 +25,14 @@ public class DieTrigger : MonoBehaviour {
         }
         else if (player)
         {
-            gameManager.Restart();
+            fallSound.Play();
+            StartCoroutine(Respawn());
         }
+    }
+
+    private IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(0.5f);
+        gameManager.Restart();
     }
 }
