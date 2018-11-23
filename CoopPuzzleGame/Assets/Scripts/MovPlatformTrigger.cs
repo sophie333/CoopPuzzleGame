@@ -33,9 +33,9 @@ public class MovPlatformTrigger : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //move.Play("moveBack");
-        pSystem.SetActive(true);
-        pLight.intensity = 6.8f;
-        m_Material.color = m_Color;
+        //pSystem.SetActive(true);
+        //pLight.intensity = 6.8f;
+        //m_Material.color = m_Color;
         audioDown.Play();
     }
 
