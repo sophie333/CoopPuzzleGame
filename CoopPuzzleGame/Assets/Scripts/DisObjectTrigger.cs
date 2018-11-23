@@ -7,6 +7,8 @@ public class DisObjectTrigger : MonoBehaviour
     [SerializeField] private GameObject obj;
     [SerializeField] private GameObject pSystem;
     [SerializeField] private Light pLight;
+    [SerializeField] private AudioSource audioUp;
+    [SerializeField] private AudioSource audioDown;
 
     private Material m_Material;
     private Color m_Color;
@@ -23,6 +25,7 @@ public class DisObjectTrigger : MonoBehaviour
         pSystem.SetActive(false);
         pLight.intensity = 0;
         m_Material.color = Color.gray;
+        audioUp.Play();
     }
 
     private void OnTriggerExit(Collider other)
@@ -31,5 +34,6 @@ public class DisObjectTrigger : MonoBehaviour
         pSystem.SetActive(true);
         pLight.intensity = 6.8f;
         m_Material.color = m_Color;
+        audioDown.Play();
     }
 }
