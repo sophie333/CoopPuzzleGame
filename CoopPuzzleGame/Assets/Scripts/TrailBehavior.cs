@@ -18,11 +18,11 @@ public class TrailBehavior : MonoBehaviour {
     {
         if (this.tag == "player1")
         {
-            m_transform.position = new Vector3(playerTrans.position.x + 30.0f, playerTrans.position.y - 0.9f, playerTrans.position.z);
+            m_transform.position = new Vector3(playerTrans.position.x + 24.0f, playerTrans.position.y - 0.9f, playerTrans.position.z);
         }
         if (this.tag == "player2")
         {
-            m_transform.position = new Vector3(playerTrans.position.x - 30.0f, playerTrans.position.y - 0.9f, playerTrans.position.z);
+            m_transform.position = new Vector3(playerTrans.position.x - 24.0f, playerTrans.position.y - 0.9f, playerTrans.position.z);
         }
 	}
 }

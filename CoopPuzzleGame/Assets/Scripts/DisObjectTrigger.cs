@@ -17,6 +17,8 @@ public class DisObjectTrigger : MonoBehaviour
     {
         m_Material = GetComponent<Renderer>().material;
         m_Color = m_Material.color;
+        audioUp.volume = 0.2f;
+        audioDown.volume = 0.2f;
     }
 
     private void OnTriggerEnter(Collider other)
