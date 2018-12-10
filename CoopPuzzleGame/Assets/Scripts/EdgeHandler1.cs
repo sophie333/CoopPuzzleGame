@@ -48,7 +48,7 @@ public class EdgeHandler1 : MonoBehaviour
 
         // Calculate target position and rotation
         // Move player above and little bit inside surface
-        Vector3 targetPos = (m_playerTrans.position + normal) + m_playerTrans.up * -1.5f;
+        Vector3 targetPos = (m_playerTrans.position + normal) + m_playerTrans.up * -1.5f;// + m_playerTrans.forward * 1.1f; ;
         Vector3 playerForward = Vector3.Cross(m_playerTrans.right, normal);
         // Create new rotation out of (new) forward and up vector
         Quaternion targetRot = Quaternion.LookRotation(playerForward, normal); 
