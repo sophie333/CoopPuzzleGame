@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DieTrigger : MonoBehaviour {
@@ -8,8 +7,10 @@ public class DieTrigger : MonoBehaviour {
     [SerializeField] AudioSource respawnSound;
     [SerializeField] AudioSource fallSound;
 
-    private void Awake()
+    private void Start()
     {
+        respawnSound.volume = 0.4f;
+        fallSound.volume = 0.8f;
         respawnSound.Play();
     }
 
@@ -26,13 +27,16 @@ public class DieTrigger : MonoBehaviour {
         else if (player)
         {
             fallSound.Play();
+            player.constantSpeed = 0;
+            player.turnSpeed = 0;
+            player.GetComponent<Rigidbody>().mass = 0.01f;
             StartCoroutine(Respawn());
         }
     }
 
     private IEnumerator Respawn()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
         gameManager.Restart();
     }
 }

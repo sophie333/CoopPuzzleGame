@@ -7,6 +7,7 @@ public class PlayerController1 : MonoBehaviour
     public float constantSpeed = 6.0f;
     public float turnSpeed = 70.0f;
 
+    [SerializeField] private AudioSource walkSound;
     private Vector3 gravity; // gravity acceleration
 
     // Player variables
@@ -52,11 +53,27 @@ public class PlayerController1 : MonoBehaviour
         {
             m_transform.Rotate(0, Input.GetAxis("Horizontal_P1") * turnSpeed * Time.deltaTime, 0);
             m_transform.Translate(0, 0, Input.GetAxis("Vertical_P1") * constantSpeed * Time.deltaTime);
+            if (Input.GetAxis("Vertical_P1") != 0)
+            {
+                walkSound.mute = false;
+            }
+            else
+            {
+                walkSound.mute = true;
+            }
         }
         else if (m_tag == "player2")
         {
             m_transform.Rotate(0, Input.GetAxis("Horizontal_P2") * turnSpeed * Time.deltaTime, 0);
             m_transform.Translate(0, 0, Input.GetAxis("Vertical_P2") * constantSpeed * Time.deltaTime);
+            if (Input.GetAxis("Vertical_P2") != 0)
+            {
+                walkSound.mute = false;
+            }
+            else
+            {
+                walkSound.mute = true;
+            }
         }
     }
 

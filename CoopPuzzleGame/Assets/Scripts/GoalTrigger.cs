@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalTrigger : MonoBehaviour {
-
-    [SerializeField] GameObject door1;
-    [SerializeField] GameObject door2;
+public class GoalTrigger : MonoBehaviour
+{    
     [SerializeField] GameObject winText;
-    [SerializeField] AudioSource cheering;
+    [SerializeField] AudioSource goalSound;
 
     private int playerNr = 0;
+
+    private void Start()
+    {
+        goalSound.volume = 0.3f;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,10 +38,8 @@ public class GoalTrigger : MonoBehaviour {
     {
         if (playerNr == 2)
         {
-            door1.SetActive(false);
-            door2.SetActive(false);
             winText.SetActive(true);
-            cheering.Play();
+            goalSound.Play();
         }
     }
 }
