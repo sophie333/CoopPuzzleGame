@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
@@ -22,11 +20,6 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    public void LoadScene(string name)
-    {
-        SceneManager.LoadScene(name);
-    }
-
     public void Restart()
     {
         SceneManager.LoadScene("Level" + level);
@@ -36,10 +29,5 @@ public class GameManager : MonoBehaviour {
     {
         level++;
         SceneManager.LoadScene("Level" + level);
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
     }
 }
