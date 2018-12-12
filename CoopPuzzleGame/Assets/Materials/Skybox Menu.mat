@@ -19,10 +19,10 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _SkyExponent1: 4.77
-    - _SkyExponent2: 2.57
-    - _SkyIntensity: 1
-    - _SunAlpha: 550
+    - _SkyExponent1: 2.7
+    - _SkyExponent2: 3.07
+    - _SkyIntensity: 1.07
+    - _SunAlpha: 550.29
     - _SunAltitude: 38
     - _SunAzimuth: 20
     - _SunBeta: 1
