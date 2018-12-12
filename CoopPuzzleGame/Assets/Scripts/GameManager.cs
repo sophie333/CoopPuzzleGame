@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
+
     public void Restart()
     {
         SceneManager.LoadScene("Level" + level);
@@ -31,5 +36,10 @@ public class GameManager : MonoBehaviour {
     {
         level++;
         SceneManager.LoadScene("Level" + level);
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Skybox Menu
+  m_Shader: {fileID: 4800000, guid: af45cbed5f4f6c84eab4e24115ecfd84, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Floats:
+    - _SkyExponent1: 4.77
+    - _SkyExponent2: 2.57
+    - _SkyIntensity: 1
+    - _SunAlpha: 550
+    - _SunAltitude: 38
+    - _SunAzimuth: 20
+    - _SunBeta: 1
+    - _SunIntensity: 1.91
+    m_Colors:
+    - _SkyColor1: {r: 0.25222498, g: 0.4679938, b: 0.49056602, a: 0}
+    - _SkyColor2: {r: 0.21176471, g: 0.30118412, b: 0.41568628, a: 0}
+    - _SkyColor3: {r: 0.122641504, g: 0.11388515, b: 0.10702207, a: 0}
+    - _SunColor: {r: 0.6320754, g: 0.61459, b: 0.43827873, a: 1}
+    - _SunVector: {r: 0.269, g: 0.615, b: 0.74, a: 0}
