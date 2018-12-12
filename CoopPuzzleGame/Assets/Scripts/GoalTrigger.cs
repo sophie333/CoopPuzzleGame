@@ -40,6 +40,13 @@ public class GoalTrigger : MonoBehaviour
         {
             winText.SetActive(true);
             goalSound.Play();
+            StartCoroutine(NextLevel());
         }
+    }
+
+    private IEnumerator NextLevel()
+    {
+        yield return new WaitForSeconds(0.6f);
+        GameManager.instance.NextLevel();
     }
 }

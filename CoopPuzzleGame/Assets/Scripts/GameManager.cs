@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour {
     public void NextLevel()
     {
         level++;
-        SceneManager.LoadScene("Level" + level);
+        if (level != 3)
+        {
+            SceneManager.LoadScene("Level" + level);
+        }
+        else
+        {
+            SceneManager.LoadScene("Levels");
+        }
     }
 }

@@ -2,8 +2,7 @@
 using UnityEngine;
 
 public class DieTrigger : MonoBehaviour {
-
-    [SerializeField] GameManager gameManager;
+    
     [SerializeField] AudioSource respawnSound;
     [SerializeField] AudioSource fallSound;
 
@@ -37,6 +36,6 @@ public class DieTrigger : MonoBehaviour {
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(0.6f);
-        gameManager.Restart();
+        GameManager.instance.Restart();
     }
 }
