@@ -8,6 +8,7 @@ public class PlayerController1 : MonoBehaviour
     public float turnSpeed = 70.0f;
 
     [SerializeField] private AudioSource walkSound;
+    [SerializeField] private ParticleSystem pSystem;
     private Vector3 gravity; // gravity acceleration
 
     // Player variables
@@ -36,6 +37,7 @@ public class PlayerController1 : MonoBehaviour
         {
             gravity = new Vector3(0f, -9.8f, 0f);
         }
+        pSystem.Stop();
     }
 
     void FixedUpdate()
@@ -75,6 +77,21 @@ public class PlayerController1 : MonoBehaviour
                 walkSound.mute = true;
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Door")
+        {
+            pSystem.Play();
+            StartCoroutine(Collision());
+        }
+    }
+
+    IEnumerator Collision()
+    {
+        yield return new WaitForSeconds(0.05f);
+        pSystem.Stop();
     }
 
     public void SetGravity(Vector3 _grav)

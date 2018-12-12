@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
     public void NextLevel()
     {
         level++;
+        Debug.Log(level);
         if (level != 3)
         {
             SceneManager.LoadScene("Level" + level);
