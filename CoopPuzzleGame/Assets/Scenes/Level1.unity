@@ -1811,6 +1811,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 5, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &277917008 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1853211878669908, guid: 26fc69db9104dfa44aee86a86d641cd7,
+    type: 2}
+  m_PrefabInternal: {fileID: 505685365}
+--- !u!114 &277917010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 277917008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 883365eca6011fc4cb684efadbdcd3f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
 --- !u!1 &279900489
 GameObject:
   m_ObjectHideFlags: 0
@@ -2998,6 +3015,30 @@ Prefab:
       propertyPath: walkSound
       value: 
       objectReference: {fileID: 977387650}
+    - target: {fileID: 4102241182654494, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4363437754110810, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336441382458672, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922002576396148, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4293119109283324, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029258765063606, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 26fc69db9104dfa44aee86a86d641cd7, type: 2}
   m_IsPrefabParent: 0
@@ -8173,7 +8214,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4830630033531292, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4531003936575054, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
       propertyPath: m_RootOrder
@@ -8181,7 +8222,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4704842041728076, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1571229977835492, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
       propertyPath: m_IsActive
@@ -8192,6 +8233,14 @@ Prefab:
       propertyPath: walkSound
       value: 
       objectReference: {fileID: 1920716806}
+    - target: {fileID: 4816829230074012, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933889065653926, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a869e7d500f953b4d8b579685de5d3c8, type: 2}
   m_IsPrefabParent: 0
