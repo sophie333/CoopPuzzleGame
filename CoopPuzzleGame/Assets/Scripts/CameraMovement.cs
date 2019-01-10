@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {/*
@@ -30,7 +28,6 @@ public class CameraMovement : MonoBehaviour
     }*/
 
     [SerializeField] private Transform m_playerTrans;
-    [SerializeField] private Transform m_cam;
     private Transform m_transform;
     private float m_angleX;
     private float m_angleY;

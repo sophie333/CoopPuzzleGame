@@ -21,11 +21,15 @@ public class DisObjectTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        audioUp.Play();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         obj.SetActive(false);
         pSystem.SetActive(false);
         pLight.intensity = 0;
         m_Material.color = Color.gray;
-        audioUp.Play();
     }
 
     private void OnTriggerExit(Collider other)
