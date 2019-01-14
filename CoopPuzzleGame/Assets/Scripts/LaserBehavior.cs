@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserBehavior : MonoBehaviour {
-
-    [SerializeField] GameManager gameManager;
+    
     [SerializeField] AudioSource laserHit;
 
     private void OnTriggerEnter(Collider other)
@@ -26,6 +25,6 @@ public class LaserBehavior : MonoBehaviour {
     private IEnumerator Respawn()
     {
         yield return new WaitForSeconds(0.5f);
-        gameManager.Restart();
+        GameManager.instance.Restart();
     }
 }

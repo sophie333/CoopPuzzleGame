@@ -23,16 +23,16 @@ public class GameManager : MonoBehaviour {
 
     public void Restart()
     {
-        StartCoroutine(ChangeScene());
+        SceneManager.LoadScene("Level" + level);
     }
 
     public void NextLevel()
     {
         level++;
         Debug.Log(level);
-        if (level != 3)
+        if (level < 4)
         {
-            StartCoroutine(ChangeScene());
+            SceneManager.LoadScene("Level" + level);
         }
         else
         {
@@ -43,12 +43,12 @@ public class GameManager : MonoBehaviour {
     public void LoadScene(int _level)
     {
         level = _level;
-        StartCoroutine(ChangeScene());
+        SceneManager.LoadScene("Level" + level);
     }
 
     private IEnumerator ChangeScene()
     {
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.001f);
         SceneManager.LoadScene("Level" + level);
     }
 
